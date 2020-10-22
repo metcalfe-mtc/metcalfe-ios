@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script type="text/javascript" src="./index.js"></script>
+</head>
+
+<body style="word-break: keep-all;width: 15000px;">
+    asd
+    <script type="text/javascript">
+        var API = window.metcalfeChainCrypto;
+
+        function validAddress(address) {
+            return API.wallet.isValidAddress(address);
+        }
+
+        function generateAddress() {
+            return API.wallet.generate();
+        }
+
+        function generateAddressBySecret(secret) {
+            return API.wallet.generate(secret)
+        }
+
+        function getMasterKeyBySecret(secret) {
+            return API.mnemonic.getMasterKey(secret);
+        }
+
+        function getSecretByMasterKey(masterKey) {
+            return API.mnemonic.getSecret(masterKey)
+        }
+
+        function sign(txJson, secret) {
+            return API.signer.sign(txJson, secret);
+        }
+    </script>
+</body>
+
+</html>
