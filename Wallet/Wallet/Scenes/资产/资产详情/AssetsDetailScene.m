@@ -87,7 +87,7 @@
 }
 
 -(void)requestListWithProgress:(BOOL)progress{
-    LocalWallet*wallet = [UserManager sharedInstance].wallet;
+    LocalWallet *wallet = [UserManager sharedInstance].wallet;
     [RequestManager getTranscationRecordsWithProgress:YES account:wallet.account forward:NO ledgerIndexMax:@(-1) ledgerIndexMin:@(-1) limit:@(50) marker:self.marker success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         NSArray * allRecords = responseObject[@"transactions"];
 
@@ -169,7 +169,13 @@
         if([balance.currency isEqualToString:self.balance.currency]){
             available = balance.balance;
             if([self.balance.currency isEqualToString:DEFAULTCURRENCY]){
+                if(balance.balance < 0){
+                    available = @"0";
+                }else if(available < self.freezeStr){
+                    self.freezeStr = available;
+                }
                 available = [available calculateBySubtracting:self.freezeStr];
+                
             }
         }
     }

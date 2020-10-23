@@ -94,8 +94,7 @@
         self.activity3.hidden = YES;
         [self.activity3 stopAnimating];
         self.detail6.text = self.model.status;
-    }else
-    {
+    }else{
         self.detail6.text = @"";
         self.activityView.hidden = NO;
         [self.activityView startAnimating];

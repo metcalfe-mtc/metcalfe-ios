@@ -220,11 +220,13 @@
         self.isValidAddress = ^(BOOL isValid) {
             if(isValid){
                 [weakSelf popPaymentAction];
+                weakSelf.isValidAddress = nil;
             }else{
                 [weakSelf showString:GetStringWithKeyFromTable(@"无效地址_message", LOCALIZABE, nil) delay:1.5];
+                weakSelf.isValidAddress = nil;
                 return;
             }
-            weakSelf.isValidAddress = nil;
+            
         };
 
 

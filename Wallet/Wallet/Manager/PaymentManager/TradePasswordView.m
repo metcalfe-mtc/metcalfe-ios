@@ -39,7 +39,6 @@
 -(instancetype)initWithFrame:(CGRect)frame secretkey:(nonnull NSString *)secretkey{
     if(self){
         self = [super initWithFrame:frame];
-        
         // 添加通知监听见键盘弹出/退出
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardAction:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardAction:) name:UIKeyboardWillHideNotification object:nil];
@@ -69,7 +68,6 @@
     // 通过通知对象获取键盘frame: [value CGRectValue]
     NSDictionary *useInfo = [sender userInfo];
     NSValue *value = [useInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
-    
     // <注意>具有约束的控件通过改变约束值进行frame的改变处理
     if([sender.name isEqualToString:UIKeyboardWillShowNotification]){
         CGFloat keyBoardHeight = [value CGRectValue].size.height;
@@ -111,7 +109,6 @@
 }
 
 #pragma mark - delegate
-
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if (range.length == 1 && string.length == 0) {
         return YES;
@@ -124,11 +121,10 @@
 }
 
 #pragma mark - action
-
-
 -(void)confirmAction{
     if(self.pwdTextField.text.length >=8 && self.pwdTextField.text.length<=16){
       NSString *secretStr = [self.secretkey AES128DecryptWithkey:self.pwdTextField.text];
+        secretStr = [secretStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         if(secretStr && secretStr.length > 0){
             if(self.inputCompleteBlock){
                 self.inputCompleteBlock(secretStr);
