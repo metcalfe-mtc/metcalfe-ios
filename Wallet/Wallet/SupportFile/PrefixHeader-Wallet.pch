@@ -88,9 +88,7 @@
 #define IOS11_OR_LATER ([[UIDevice currentDevice].systemVersion doubleValue] >= 11.0)
 
 
-//#define BASE_URL_NORMAL @"https://wapi.metcalfe.network/"
-
-#define BASE_URL_NORMAL @"http://101.32.183.23:18080/"               //ceshi
+#define BASE_URL_NORMAL @"https://wapi.metcalfe.network/"
 
 #define APPV_CODE @"1"
 
