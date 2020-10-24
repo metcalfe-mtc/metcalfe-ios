@@ -207,6 +207,7 @@
         _orginalpwd = [[UITextField alloc] init];
         _orginalpwd.placeholder = GetStringWithKeyFromTable(@"输入原密码_placeHolder", LOCALIZABE, nil);
         _orginalpwd.secureTextEntry = YES;
+        _orginalpwd.delegate = self;
         _orginalpwd.font = [UIFont systemFontOfSize:14];
         _orginalpwd.clearButtonMode = UITextFieldViewModeWhileEditing;
     }

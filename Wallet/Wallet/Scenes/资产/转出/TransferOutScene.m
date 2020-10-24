@@ -184,7 +184,14 @@
 }
 
 - (void)allButtonAction{
-        self.amountTextField.text = self.availableValue;
+    self.amountTextField.text = self.availableValue;
+    if (self.receiveTextField.text.length>0 && self.amountTextField.text.length>0)  {
+        self.transferButton.backgroundColor = CLICKABLE_COLOR;
+        self.transferButton.enabled = YES;
+    }else{
+        self.transferButton.backgroundColor = UNCLICK_COLOR;
+        self.transferButton.enabled = NO;
+    }
 }
 
 -(void)transferButtonAction{

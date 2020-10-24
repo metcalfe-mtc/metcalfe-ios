@@ -116,6 +116,10 @@
     else if (self.pwdTextField.text.length >16) {
         self.pwdTextField.text = [textField.text substringToIndex:16];
         return NO;
+    }else {
+        NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:PWDSTRENGTH] invertedSet];
+        NSString *text = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+        return [string isEqualToString:text];
     }
     return YES;
 }
