@@ -22,9 +22,9 @@
 
 }
 - (IBAction)creditAction:(id)sender {
-    if(self.creditBlock){
-        self.creditBlock();
-    }
+//    if(self.creditBlock){
+//        self.creditBlock();
+//    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

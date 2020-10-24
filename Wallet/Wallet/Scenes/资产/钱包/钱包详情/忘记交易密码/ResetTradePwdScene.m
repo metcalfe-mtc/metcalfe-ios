@@ -268,6 +268,7 @@
         _checkpwd.placeholder = GetStringWithKeyFromTable(@"再次确认新密码_message", LOCALIZABE, nil);
         _checkpwd.font = [UIFont systemFontOfSize:14];
         _checkpwd.secureTextEntry = YES;
+        _checkpwd.delegate = self;
         _checkpwd.clearButtonMode = UITextFieldViewModeWhileEditing;
     }
     return _checkpwd;

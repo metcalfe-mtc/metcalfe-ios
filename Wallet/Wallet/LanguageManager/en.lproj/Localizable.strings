@@ -149,7 +149,7 @@
 "交易详情_title" = "Detail";
 "未激活_alertTitle" = "Inactivated";
 "关闭_alertAction" = "Closed";
-"激活需_alertMessage" = "Activation requires 0.0001 M and can be obtained by someone else's transfer.";
+"激活需_alertMessage" = "Please activate the wallet by transfer from others";
 "发款方_title" = "From";
 "收款方_title" = "To";
 "金额_title" = "Amount";

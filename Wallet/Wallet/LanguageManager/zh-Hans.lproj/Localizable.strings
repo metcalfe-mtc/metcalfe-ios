@@ -123,8 +123,8 @@
 "收款方_title" = "收款方";
 "收款地址_placeHolder" = "收款地址";
 "转出金额_title" = "转出金额";
-"备注_title" = "备注";
-"备注(选填)_placeHolder" = "备注(选填)";
+"备注_title" = "Memo";
+"备注(选填)_placeHolder" = "Memo(Optional)";
 "全部_button" = "全部";
 "转出_button" = "转出";
 "可转出_placeHolder" = "可转出";
@@ -149,7 +149,7 @@
 "交易详情_title" = "交易详情";
 "未激活_alertTitle" = "未激活";
 "关闭_alertAction" = "关闭";
-"激活需_alertMessage" = "激活需 0.0001 M，可通过他人转账的方式获得。";
+"激活需_alertMessage" = "请通过他人转账激活钱包";
 "发款方_title" = "发款方";
 "收款方_title" = "收款方";
 "金额_title" = "金额";
@@ -159,7 +159,7 @@
 "交易哈希_title" = "交易哈希";
 "区块_title" = "区块";
 "时间_title" = "时间";
-"备注_title" = "备注";
+"备注_title" = "Memo";
 "发款方已复制_title" = "发款方已复制";
 "收款方已复制_title" = "收款方已复制";
 "交易哈希已复制_title" = "交易哈希已复制";

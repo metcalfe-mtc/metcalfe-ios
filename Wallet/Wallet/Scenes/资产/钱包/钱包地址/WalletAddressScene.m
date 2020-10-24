@@ -31,7 +31,7 @@
 
 //保存至相册
 - (IBAction)saveToLibraryAction:(id)sender {
-    UIImage * image = [self captureImageFromView:self.addressView];
+    UIImage * image = [self captureImageFromView:self.addressImageView];
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
         
         [PHAssetChangeRequest creationRequestForAssetFromImage:image];

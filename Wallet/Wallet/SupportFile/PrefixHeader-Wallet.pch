@@ -88,11 +88,11 @@
 #define IOS11_OR_LATER ([[UIDevice currentDevice].systemVersion doubleValue] >= 11.0)
 
 
-#define BASE_URL_NORMAL @"https://wapi.metcalfe.network/"
+//#define BASE_URL_NORMAL @"https://wapi.metcalfe.network/"
+#define BASE_URL_NORMAL @"http://101.32.183.23:18080/"
 
 #define APPV_CODE @"1"
 
-#define APPV_TYPE @"3"                                                     //'2'APPSTORE    '3'TESTFLIGHT
 
 
 // Include any system framework and library headers here that should be included in all compilation units.

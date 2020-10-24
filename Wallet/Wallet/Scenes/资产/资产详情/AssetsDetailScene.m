@@ -39,11 +39,7 @@
     self.view.backgroundColor = BACKGROUNDCOLOR;
     [self setTitleViewWithWhiteTitle:self.balance.currency];
     self.availableTitle.text = GetStringWithKeyFromTable(@"可用_text", LOCALIZABE, nil);
-    if([self.balance.currency isEqualToString:DEFAULTCURRENCY]){
-        [self setupDateWithBalance:[self.balance.balance calculateBySubtracting:self.freezeStr] freeze:self.freezeStr];
-    }else{
-        [self setupDateWithBalance:self.balance.balance freeze:self.freezeStr];
-    }
+    [self setupDateWithBalance:self.balance.balance freeze:self.freezeStr];
     self.currentPage = 1;
     self.markerCount = 3;
     [self.tableView registerNib:[UINib nibWithNibName:@"TranscationRecordCell" bundle:nil] forCellReuseIdentifier:@"TranscationRecordCell"];
@@ -66,8 +62,17 @@
 
 -(void)setupDateWithBalance:(NSString *)balance freeze:(NSString *)freeze{
     if([self.balance.currency isEqualToString:DEFAULTCURRENCY]){
+        if(![balance calculateIsGreaterThan:@"0"]){
+            balance = @"0";
+            self.freeze.text = [NSString stringWithFormat:@"%@ %@",GetStringWithKeyFromTable(@"冻结_text", LOCALIZABE, nil),freeze];
+        }else if([balance calculateIsLessThan:freeze]){
+            self.freeze.text = [NSString stringWithFormat:@"%@ %@",GetStringWithKeyFromTable(@"冻结_text", LOCALIZABE, nil),balance];
+            balance = @"0";
+        }else{
+            balance = [balance calculateBySubtracting:freeze];
+            self.freeze.text = [NSString stringWithFormat:@"%@ %@",GetStringWithKeyFromTable(@"冻结_text", LOCALIZABE, nil),freeze];
+        }
         NSString *textStr = balance;
-        self.freeze.text = [NSString stringWithFormat:@"%@ %@",GetStringWithKeyFromTable(@"冻结_text", LOCALIZABE, nil),freeze];
         NSDictionary *attribtDic = @{NSUnderlineStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
         NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:textStr attributes:attribtDic];
         self.balanceAmount.attributedText = attribtStr;
@@ -168,15 +173,6 @@
         BalanceModel *balance = arr[i];
         if([balance.currency isEqualToString:self.balance.currency]){
             available = balance.balance;
-            if([self.balance.currency isEqualToString:DEFAULTCURRENCY]){
-                if(balance.balance < 0){
-                    available = @"0";
-                }else if(available < self.freezeStr){
-                    self.freezeStr = available;
-                }
-                available = [available calculateBySubtracting:self.freezeStr];
-                
-            }
         }
     }
     return available;

@@ -143,13 +143,9 @@
     }
     //    if (textField != self.nameTextField) {
     if(textField == self.tradePwdTextField || textField == self.checkPwdTextField){
-        NSString *regex = @"[\u4e00-\u9fa5]{0,}$"; // 中文
-        // 2、拼接谓词
-        NSPredicate *predicateRe1 = [NSPredicate predicateWithFormat:@"self matches %@", regex];
-        // 3、匹配字符串
         NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:PWDSTRENGTH] invertedSet];
         NSString *text = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-        return [string isEqualToString:text] && ![predicateRe1 evaluateWithObject:string];
+        return [string isEqualToString:text];
     }
     //    }
     return YES;
@@ -311,6 +307,7 @@
         _checkPwdTextField.font = [UIFont systemFontOfSize:14];
         _checkPwdTextField.placeholder = GetStringWithKeyFromTable(@"确认交易密码_placeHolder", LOCALIZABE, nil);
         _checkPwdTextField.secureTextEntry = YES;
+        _checkPwdTextField.delegate = self;
         _checkPwdTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     }
     return _checkPwdTextField;

@@ -283,6 +283,7 @@
         _checkpwd = [[UITextField alloc] init];
         _checkpwd.placeholder = GetStringWithKeyFromTable(@"确认交易密码_placeHolder", LOCALIZABE, nil);
         _checkpwd.secureTextEntry = YES;
+        _checkpwd.delegate = self;
         _checkpwd.font = [UIFont systemFontOfSize:14];
         _checkpwd.clearButtonMode = UITextFieldViewModeWhileEditing;
     }

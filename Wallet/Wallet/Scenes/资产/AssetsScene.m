@@ -241,7 +241,13 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row != 0 && indexPath.row != self.balanceArr.count+1){
+    if(self.balanceArr.count == 0){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:GetStringWithKeyFromTable(@"未激活_alertTitle", LOCALIZABE, nil) message:GetStringWithKeyFromTable(@"激活需_alertMessage", LOCALIZABE, nil) preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:GetStringWithKeyFromTable(@"关闭_alertAction", LOCALIZABE, nil) style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:action];
+        [action setValue:RGB(231, 88, 84) forKey:@"titleTextColor"];
+        [self presentViewController:alert animated:YES completion:nil];
+    }else if(indexPath.row != 0 && indexPath.row != self.balanceArr.count+1){
         AssetsDetailScene *scene = [[AssetsDetailScene alloc] init];
         if(indexPath.row == 1){
             scene.freezeStr = self.freeze;
