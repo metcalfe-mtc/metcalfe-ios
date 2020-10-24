@@ -309,8 +309,8 @@
             filePath = "Wallet/Scenes/&#x8d44;&#x4ea7;/&#x8d44;&#x4ea7;&#x8be6;&#x60c5;/AssetsDetailScene.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-requestBalancesList"
             landmarkType = "7">
          </BreakpointContent>
@@ -325,105 +325,9 @@
             filePath = "Wallet/Scenes/&#x8d44;&#x4ea7;/&#x8d44;&#x4ea7;&#x8be6;&#x60c5;/AssetsDetailScene.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-getBalanceAvailableWithArr:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F750C928-6F77-463E-9676-D3A6F39495D3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Wallet/Scenes/&#x8d44;&#x4ea7;/&#x8d44;&#x4ea7;&#x8be6;&#x60c5;/AssetsDetailScene.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "-setupDateWithBalance:freeze:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8C8E0B00-BE85-46EC-BF1E-37F920607B81"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Wallet/Scenes/&#x8d44;&#x4ea7;/&#x8d44;&#x4ea7;&#x8be6;&#x60c5;/AssetsDetailScene.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-setupDateWithBalance:freeze:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "04CD514E-81DE-449B-8A39-6AF0C2F8067F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Wallet/Scenes/&#x8d44;&#x4ea7;/&#x8d44;&#x4ea7;&#x8be6;&#x60c5;/AssetsDetailScene.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "-setupDateWithBalance:freeze:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1C3E1E8A-6DC3-4D08-B3A1-B750D26F546D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Wallet/Scenes/&#x8d44;&#x4ea7;/&#x8d44;&#x4ea7;&#x8be6;&#x60c5;/AssetsDetailScene.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-setupDateWithBalance:freeze:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "17AE23F7-84E6-4DB4-BD11-47597CBE3CEB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Wallet/Scenes/&#x8d44;&#x4ea7;/&#x8d44;&#x4ea7;&#x8be6;&#x60c5;/AssetsDetailScene.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-setupDateWithBalance:freeze:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AD693501-0155-40F0-87FC-38BB6643CE2D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Wallet/Scenes/&#x8d44;&#x4ea7;/&#x8d44;&#x4ea7;&#x8be6;&#x60c5;/AssetsDetailScene.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-setupDateWithBalance:freeze:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -462,7 +366,23 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4DF68E18-7FAD-44FD-9EDC-8B4B0C870323"
+            uuid = "7BDDEB4A-09D5-4073-8F1E-FCFF7525C1F6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wallet/Scenes/&#x8d44;&#x4ea7;/&#x8d44;&#x4ea7;&#x8be6;&#x60c5;/AssetsDetailScene.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-setupDateWithBalance:freeze:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC0DD611-AE61-4F23-927D-9CAC51609C13"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -472,6 +392,54 @@
             startingLineNumber = "42"
             endingLineNumber = "42"
             landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA4A8F59-BABE-4335-8DA5-8A91E9932359"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wallet/Scenes/&#x8d44;&#x4ea7;/&#x8d44;&#x4ea7;&#x8be6;&#x60c5;/AssetsDetailScene.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-setupDateWithBalance:freeze:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77CC9DB6-5CF4-42DE-AD50-6B5FDDABFF63"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wallet/Scenes/&#x8d44;&#x4ea7;/&#x8d44;&#x4ea7;&#x8be6;&#x60c5;/AssetsDetailScene.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-setupDateWithBalance:freeze:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED16D986-1C82-49CE-95E6-FD3560F1069B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wallet/Scenes/&#x8d44;&#x4ea7;/&#x8d44;&#x4ea7;&#x8be6;&#x60c5;/AssetsDetailScene.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-setupDateWithBalance:freeze:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

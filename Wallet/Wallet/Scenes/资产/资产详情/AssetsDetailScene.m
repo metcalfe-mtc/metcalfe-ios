@@ -62,19 +62,22 @@
 
 -(void)setupDateWithBalance:(NSString *)balance freeze:(NSString *)freeze{
     if([self.balance.currency isEqualToString:DEFAULTCURRENCY]){
-        if(![balance calculateIsGreaterThan:@"0"]){
+        
+        if([balance calculateIsLessThan:@"0"]){
             balance = @"0";
-            self.freeze.text = [NSString stringWithFormat:@"%@ %@",GetStringWithKeyFromTable(@"冻结_text", LOCALIZABE, nil),freeze];
-        }else if([balance calculateIsLessThan:freeze]){
+            self.freeze.text = [NSString stringWithFormat:@"%@ 0",GetStringWithKeyFromTable(@"冻结_text", LOCALIZABE, nil)];
+        }else if([balance calculateIsLessThan:self.freezeStr]){
             self.freeze.text = [NSString stringWithFormat:@"%@ %@",GetStringWithKeyFromTable(@"冻结_text", LOCALIZABE, nil),balance];
             balance = @"0";
+            
         }else{
             balance = [balance calculateBySubtracting:freeze];
             self.freeze.text = [NSString stringWithFormat:@"%@ %@",GetStringWithKeyFromTable(@"冻结_text", LOCALIZABE, nil),freeze];
         }
-        NSString *textStr = balance;
+
+        NSString *availAble = balance;
         NSDictionary *attribtDic = @{NSUnderlineStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
-        NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:textStr attributes:attribtDic];
+        NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:availAble attributes:attribtDic];
         self.balanceAmount.attributedText = attribtStr;
     }else{
         NSString *textStr = balance;
