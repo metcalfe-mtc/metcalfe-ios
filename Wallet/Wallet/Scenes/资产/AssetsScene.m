@@ -52,6 +52,9 @@
     self.walletName.text = wallet.name;
     self.walletAddress.text = wallet.account;
 //    self.walletAddress.lineBreakMode = NSLineBreakByTruncatingMiddle;
+    if(SYSTEM_GET_(NEEDRefreshCredit) ){
+        [self requestList];
+    }
 }
 
 -(void)rightItemAction{
@@ -100,7 +103,6 @@
             BOOL needupdate = [dic[@"upgrade"] boolValue];
             if(needupdate){
                 BOOL forceUpdate = dic[@"force"];
-                
                 NSString *titleString = [NSString stringWithFormat:@"%@ %@",NSLocalizedStringFromTable(@"更新_massage", LOCALIZABE, nil),dic[@"version"]];
                 
                 UIAlertController* alert = [UIAlertController alertControllerWithTitle:titleString
@@ -141,12 +143,13 @@
 
 
 -(void)requestList{
+    SYSTEM_SET_(nil, NEEDRefreshCredit);
     LocalWallet*wallet = [UserManager sharedInstance].wallet;
     [RequestManager getAssetsBaseValueWithProgress:NO account:wallet.account ledgerInddex:@"current" withFee:YES success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         [self.balanceArr removeAllObjects];
         BalanceModel *balance = [[BalanceModel alloc] init];
         self.sequence = responseObject[@"sequence"];
-        [balance modelWithAccount:responseObject[@"account"] currency:DEFAULTCURRENCY balance:responseObject[@"balance"] baseFee:responseObject[@"baseFee"] ledgerIndex:responseObject[@"ledgerIndex"] sequence:responseObject[@"sequence"]];
+        [balance modelWithAccount:responseObject[@"account"] currency:DEFAULTCURRENCY balance:responseObject[@"balance"] baseFee:responseObject[@"baseFee"] ledgerIndex:responseObject[@"ledgerIndex"] sequence:responseObject[@"sequence"] decimals:[responseObject[@"decimals"] longValue]];
         [self.balanceArr addObject:balance];
         [RequestManager getAssetsSecValueWithProgress:NO account:wallet.account ledgerInddex:@"current" limit:@(10) marker:self.marker success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull response) {
             NSArray *lines = response[@"lines"];
@@ -154,7 +157,7 @@
                 for(int i = 0; i < lines.count; i++){
                     NSDictionary *line = lines[i];
                     BalanceModel *balance = [[BalanceModel alloc] init];
-                    [balance modelWithAccount:line[@"account"] currency:line[@"currency"] balance:line[@"balance"] baseFee:@"0" ledgerIndex:@"0" sequence:line[@"sequence"]];
+                    [balance modelWithAccount:line[@"account"] currency:line[@"currency"] balance:line[@"balance"] baseFee:@"0" ledgerIndex:@"0" sequence:line[@"sequence"] decimals:[line[@"decimalsLimit"] longValue]];
                     [self.balanceArr addObject:balance];
                 }
             }

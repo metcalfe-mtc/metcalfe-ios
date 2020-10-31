@@ -402,7 +402,7 @@
                 NSMutableString *str = [[NSMutableString alloc] initWithString:textField.text];
                 [str insertString:string atIndex:range.location];
                 
-                if (str.length >= [str rangeOfString:@"."].location + 8) {
+                if (str.length >= [str rangeOfString:@"."].location + self.balance.decimals+2) {
                     
                     return NO;
                 }

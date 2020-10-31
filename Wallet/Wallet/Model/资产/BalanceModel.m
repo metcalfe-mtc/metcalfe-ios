@@ -10,7 +10,7 @@
 #import "NSString+TEDecimalNumber.h"
 
 @implementation BalanceModel
--(void)modelWithAccount:(NSString *)account currency:(NSString *)currency balance:(NSString *)balance baseFee:(NSString *)baseFee ledgerIndex:(NSString *)ledgerIndex sequence:(NSString *)sequence{
+-(void)modelWithAccount:(NSString *)account currency:(NSString *)currency balance:(NSString *)balance baseFee:(NSString *)baseFee ledgerIndex:(NSString *)ledgerIndex sequence:(NSString *)sequence decimals:(long)decimals{
     self.account = account;
     self.currency = currency;
     self.balance = balance;
@@ -20,5 +20,6 @@
     self.baseFee = baseFee;
     self.ledgerIndex = self.ledgerIndex;
     self.sequence = sequence;
+    self.decimals = decimals;
 }
 @end

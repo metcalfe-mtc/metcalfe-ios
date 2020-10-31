@@ -18,7 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) NSString *freeze;
 @property(nonatomic,strong) NSString *ledgerIndex;
 @property(nonatomic,strong) NSString *sequence;
--(void)modelWithAccount:(NSString *)account currency:(NSString *)currency balance:(NSString *)balance baseFee:(NSString *)baseFee ledgerIndex:(NSString *)ledgerIndex sequence:(NSString *)sequence;
+@property(nonatomic,assign) long decimals;
+-(void)modelWithAccount:(NSString *)account currency:(NSString *)currency balance:(NSString *)balance baseFee:(NSString *)baseFee ledgerIndex:(NSString *)ledgerIndex sequence:(NSString *)sequence decimals:(long)decimals;
 
 @end
 

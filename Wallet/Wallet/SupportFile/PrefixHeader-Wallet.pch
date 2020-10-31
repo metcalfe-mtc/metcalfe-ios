@@ -47,7 +47,7 @@
 #define KEEPNEW @"keepUpdate"              //有更新是否更新
 #define VERSION @"versionCode"             //版本号
 #define PWDSTRENGTH @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefjhigklmnopqrstuvwxyz0123456789~!@#$%^&*()_+"
-
+#define NEEDRefreshCredit @"needRefreshCredit"
 //设置
 #define MBPDELAY   1.5       //弹出窗延迟
 
@@ -89,6 +89,7 @@
 
 
 #define BASE_URL_NORMAL @"https://wapi.metcalfe.network/"
+//#define BASE_URL_NORMAL @"http://101.32.183.23:18080/"
 
 #define APPV_CODE @"1"
 

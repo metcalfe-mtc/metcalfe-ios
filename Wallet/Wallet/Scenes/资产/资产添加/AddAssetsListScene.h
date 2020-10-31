@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AddAssetsListScene : BaseViewController
-
+@property(nonatomic,copy) void (^backRefreshBlock)(void);
 @property(nonatomic,strong)NSString *sequence;
 
 @end

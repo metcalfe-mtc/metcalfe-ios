@@ -41,6 +41,10 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)dealloc{
+    
+}
+
 -(void)setupNavi{
 //    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_addAssets"] style:UIBarButtonItemStylePlain target:self action:@selector(addAssetsAction)];
 //    self.navigationItem.rightBarButtonItem = addItem;
@@ -165,6 +169,7 @@
                         [weakSelf hideProgressHUDString];
                         NSString *engineResult = result[@"data"][@"engineResult"];
                         if([engineResult isEqualToString:@"tesSUCCESS"]){
+                            SYSTEM_SET_(@"1", NEEDRefreshCredit);
                             [weakSelf showString:GetStringWithKeyFromTable(@"成功_status", LOCALIZABE, nil) delay:1.5];
                         }else{
                             [weakSelf showString:[NSString stringWithFormat:@"%@",result[@"data"][@"engineResultMessage"]] delay:1.5];

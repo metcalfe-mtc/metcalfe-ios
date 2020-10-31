@@ -136,7 +136,7 @@
         NSMutableArray *balanceArr = [NSMutableArray array];
         BalanceModel *balance = [[BalanceModel alloc] init];
         self.sequence = responseObject[@"sequence"];
-        [balance modelWithAccount:responseObject[@"account"] currency:DEFAULTCURRENCY balance:responseObject[@"balance"] baseFee:responseObject[@"baseFee"] ledgerIndex:responseObject[@"ledgerIndex"] sequence:responseObject[@"sequence"]];
+        [balance modelWithAccount:responseObject[@"account"] currency:DEFAULTCURRENCY balance:responseObject[@"balance"] baseFee:responseObject[@"baseFee"] ledgerIndex:responseObject[@"ledgerIndex"] sequence:responseObject[@"sequence"]  decimals:[responseObject[@"decimals"] longValue]];
         [balanceArr addObject:balance];
         [RequestManager getAssetsSecValueWithProgress:NO account:wallet.account ledgerInddex:@"current" limit:@(10) marker:self.marker success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull response) {
             NSArray *lines = response[@"lines"];
@@ -144,7 +144,7 @@
                 for(int i = 0; i < lines.count; i++){
                     NSDictionary *line = lines[i];
                     BalanceModel *balance = [[BalanceModel alloc] init];
-                    [balance modelWithAccount:line[@"account"] currency:line[@"currency"] balance:line[@"balance"] baseFee:@"0" ledgerIndex:@"0" sequence:line[@"sequence"]];
+                    [balance modelWithAccount:line[@"account"] currency:line[@"currency"] balance:line[@"balance"] baseFee:@"0" ledgerIndex:@"0" sequence:line[@"sequence"] decimals:[line[@"decimalsLimit"] longValue]];
                     [balanceArr addObject:balance];
                 }
             }
@@ -181,7 +181,6 @@
     return available;
 }
 
-
 - (IBAction)transferOutAction:(id)sender {
     TransferOutScene *scene = [[TransferOutScene alloc] init];
     scene.balance = self.balance;
@@ -195,7 +194,6 @@
     }else{
         return 0;
     }
-    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

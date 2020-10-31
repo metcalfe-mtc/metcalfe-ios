@@ -53,6 +53,7 @@
                 self.signWithTxjsonAndSecret = ^(id  _Nullable result) {
                     if([result isKindOfClass:[NSDictionary class]]){
                         [RequestManager transcationSubmitWithProgress:NO hash:result[@"hash"] txBlob:result[@"txBlob"] success:^(id  _Nonnull result) {
+                            SYSTEM_SET_(@"1", NEEDRefreshCredit);
                             [weakSelf.navigationController popViewControllerAnimated:YES];
                         } warn:^(NSString * _Nonnull content) {
                             
