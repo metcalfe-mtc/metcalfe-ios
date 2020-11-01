@@ -52,7 +52,7 @@
     self.walletName.text = wallet.name;
     self.walletAddress.text = wallet.account;
 //    self.walletAddress.lineBreakMode = NSLineBreakByTruncatingMiddle;
-    if(SYSTEM_GET_(NEEDRefreshCredit) ){
+    if(SYSTEM_GET_(NEEDRefreshCredit) || SYSTEM_GET_(NEEDRefreshBalance)){
         [self requestList];
     }
 }
@@ -144,6 +144,7 @@
 
 -(void)requestList{
     SYSTEM_SET_(nil, NEEDRefreshCredit);
+    SYSTEM_SET_(nil, NEEDRefreshBalance);
     LocalWallet*wallet = [UserManager sharedInstance].wallet;
     [RequestManager getAssetsBaseValueWithProgress:NO account:wallet.account ledgerInddex:@"current" withFee:YES success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         [self.balanceArr removeAllObjects];

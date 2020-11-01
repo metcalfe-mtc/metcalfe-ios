@@ -48,6 +48,7 @@
 #define VERSION @"versionCode"             //版本号
 #define PWDSTRENGTH @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefjhigklmnopqrstuvwxyz0123456789~!@#$%^&*()_+"
 #define NEEDRefreshCredit @"needRefreshCredit"
+#define NEEDRefreshBalance @"needRefreshBalance"
 //设置
 #define MBPDELAY   1.5       //弹出窗延迟
 

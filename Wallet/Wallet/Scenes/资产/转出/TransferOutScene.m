@@ -269,6 +269,7 @@
                 [RequestManager transcationSubmitWithProgress:NO hash:response[@"hash"] txBlob:response[@"txBlob"] success:^(id  _Nonnull result) {
                     [weakSelf hideProgressHUDString];
                     if(result[@"data"][@"engineResult"] && [result[@"data"][@"engineResult"] isEqualToString:@"tesSUCCESS"]){
+                        SYSTEM_SET_(@"1", NEEDRefreshBalance);
                         TransferDetailScene *scene = [[TransferDetailScene alloc] init];
                         scene.HashStr = result[@"data"][@"hash"];
                         [(BaseNavigationController *)weakSelf.navigationController replaceViewController:scene animated:YES];
