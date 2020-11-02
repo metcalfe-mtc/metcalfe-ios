@@ -111,13 +111,18 @@
                     }
                 }
             }
+            if([obj[@"transactionType"] isEqualToString:@"TrustSet"]){
+                    if(obj[@"limitAmount"][@"currency"] && [obj[@"limitAmount"][@"currency"] isEqualToString:self.balance.currency]){
+                        [records addObject:dict];
+                    }
+            }
         }];
         self.transactions = records;
         if(self.transactions.count> 10*self.currentPage){
             [self endRefresh];
             self.transactions = [self.transactions subarrayWithRange:NSMakeRange(0, 10*self.currentPage)];
         }else{
-            [self.tableView.mj_header endRefreshing];
+            [self.tableView.mj_header endRefreshing];   
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         [self.tableView reloadData];
@@ -208,22 +213,35 @@
     }else{
         NSDictionary *dict = self.transactions[indexPath.row-1];
         TranscationRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TranscationRecordCell" forIndexPath:indexPath];
-        if([dict[@"account"] isEqualToString:[UserManager sharedInstance].wallet.account]){
-            cell.transferType.text = GetStringWithKeyFromTable(@"转出_status", LOCALIZABE, nil);
-            cell.transferType.textColor = RGB(0, 78, 254);
-            if([self.balance.currency isEqualToString:DEFAULTCURRENCY]){
-                cell.amount.text = [NSString stringWithFormat:@"- %@",[dict[@"amount"][@"value"] calculateByDividing:@"1000000"]];
+        if([dict[@"transactionType"] isEqualToString:@"TrustSet"]){
+            NSString *value = dict[@"limitAmount"][@"value"];
+            if([value isEqualToString:@"0"]){
+                cell.transferType.text = GetStringWithKeyFromTable(@"取消授信_status", LOCALIZABE, nil);
+                cell.transferType.textColor = RGB(0, 78, 254);
+
             }else{
-                cell.amount.text = [NSString stringWithFormat:@"- %@",dict[@"amount"][@"value"]];
+                cell.transferType.text = GetStringWithKeyFromTable(@"授信_status", LOCALIZABE, nil);
+                cell.transferType.textColor = RGB(255, 0, 0);
             }
+            cell.amount.text = @"";
         }else{
-            if([self.balance.currency isEqualToString:DEFAULTCURRENCY]){
-                cell.amount.text = [NSString stringWithFormat:@"+ %@",[dict[@"amount"][@"value"] calculateByDividing:@"1000000"]];
+            if([dict[@"account"] isEqualToString:[UserManager sharedInstance].wallet.account]){
+                cell.transferType.text = GetStringWithKeyFromTable(@"转出_status", LOCALIZABE, nil);
+                cell.transferType.textColor = RGB(0, 78, 254);
+                if([self.balance.currency isEqualToString:DEFAULTCURRENCY]){
+                    cell.amount.text = [NSString stringWithFormat:@"- %@",[dict[@"amount"][@"value"] calculateByDividing:@"1000000"]];
+                }else{
+                    cell.amount.text = [NSString stringWithFormat:@"- %@",dict[@"amount"][@"value"]];
+                }
             }else{
-                cell.amount.text = [NSString stringWithFormat:@"+ %@",dict[@"amount"][@"value"]];
+                if([self.balance.currency isEqualToString:DEFAULTCURRENCY]){
+                    cell.amount.text = [NSString stringWithFormat:@"+ %@",[dict[@"amount"][@"value"] calculateByDividing:@"1000000"]];
+                }else{
+                    cell.amount.text = [NSString stringWithFormat:@"+ %@",dict[@"amount"][@"value"]];
+                }
+                cell.transferType.text = GetStringWithKeyFromTable(@"转入_status", LOCALIZABE, nil);
+                cell.transferType.textColor = RGB(255, 0, 0);
             }
-            cell.transferType.text = GetStringWithKeyFromTable(@"转入_status", LOCALIZABE, nil);
-            cell.transferType.textColor = RGB(255, 0, 0);
         }
         cell.status.text = [dict[@"transactionResult"] isEqualToString:@"tesSUCCESS"]?GetStringWithKeyFromTable(@"成功_status", LOCALIZABE, nil):GetStringWithKeyFromTable(@"失败_status", LOCALIZABE, nil);
         cell.time.text = [NSObject timeWithSecondStr:dict[@"date"] withFormatStyle:@"yyyy-MM-dd HH:mm:ss"];
@@ -247,6 +265,7 @@
     if(indexPath.row != 0 && indexPath.row != self.transactions.count+1){
         NSDictionary *dict = self.transactions[indexPath.row-1];
         TransferDetailScene *scene = [[TransferDetailScene alloc] init];
+        scene.transcationType = dict[@"transactionType"];
         scene.HashStr = dict[@"hash"];
         [self.navigationController pushViewController:scene animated:YES];
     }

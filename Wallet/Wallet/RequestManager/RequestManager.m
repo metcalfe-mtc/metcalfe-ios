@@ -279,42 +279,6 @@ DEF_SINGLETON(RequestManager)
     }];
 }
 
-//转账
-+(void)getTranscationAccountWithProgress:(BOOL)showProgress success:(void(^)(NSURLSessionDataTask * task, id responseObject))success warn:(void(^)(NSString * content))warn error:(void(^)(NSString * content))error failure:(void(^)(NSURLSessionDataTask * task, NSError * error))failure{
-    RequestManager *manager = [RequestManager sharedInstance];
-    NSString *urlStr = [BASE_URL_NORMAL stringByAppendingString:@"api/core/transaction/account"];
-    NSMutableDictionary  *parameter = [NSMutableDictionary dictionary];
-    parameter[@"account"] = [UserManager sharedInstance].wallet.account;
-    if(showProgress){
-        [manager showProgressHUD];
-    }
-    [manager.httpSessionManager GET:urlStr parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (showProgress) {
-            [manager hideProgressHUD];
-        }
-        [manager logWithTask:task responseObject:responseObject];
-        NSString *statusStr = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
-        if([statusStr isEqualToString:@"success"]){
-            if(success){
-                success(task,responseObject[@"data"]);
-            }
-        }
-        else{
-            if(warn){
-                warn(responseObject[@"message"]);
-            }
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (showProgress) {
-            [manager hideProgressHUD];
-        }
-        [manager logWithTask:task error:error];
-        if (failure) {
-            failure(task, error);
-        }
-    }];
-}
-
 //交易详情
 +(void)getTranscationDetailWithProgress:(BOOL)showProgress hash:(NSString *)hash success:(void(^)(NSURLSessionDataTask * task, id responseObject))success warn:(void(^)(NSString * content))warn error:(void(^)(NSString * content))error failure:(void(^)(NSURLSessionDataTask * task, NSError * error))failure{
     RequestManager *manager = [RequestManager sharedInstance];

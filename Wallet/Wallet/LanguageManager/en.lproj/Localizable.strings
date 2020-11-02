@@ -142,6 +142,8 @@
 "额度_text" = "Amount";
 "转入_status" = "In";
 "转出_status" = "Out";
+"授信_status" = "Credit";
+"取消授信_status" = "CancleCredit";
 "成功_status" = "Success";
 "失败_status" = "Failure";
 "交易记录_title" = "Record";
@@ -153,6 +155,9 @@
 "发款方_title" = "From";
 "收款方_title" = "To";
 "金额_title" = "Amount";
+"发起方_title" = "Account";
+"发行商_title" = "Issuer";
+"币种_title" = "Currency";
 "手续费_title" = "Fee";
 "交易类型_title" = "Type";
 "状态_title" = "Status";

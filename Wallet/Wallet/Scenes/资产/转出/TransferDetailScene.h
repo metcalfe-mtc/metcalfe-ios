@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TransferDetailScene : BaseViewController
 @property(nonatomic,strong) NSString *HashStr;
+@property(nonatomic,strong) NSString *transcationType;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -35,9 +35,6 @@ AS_SINGLETON(RequestManager)
 //授信
 +(void)trustSetWithCurrency:(NSString *)currency fee:(NSString *)fee issuer:(NSString *)issuer sequence:(NSString *)sequence value:(NSString *)value progress:(BOOL)showProgress success:(void(^)(NSURLSessionDataTask * task, id responseObject))success warn:(void(^)(NSString * content))warn error:(void(^)(NSString * content))error failure:(void(^)(NSURLSessionDataTask * task, NSError * error))failure;
 
-//转账记录
-+(void)getTranscationAccountWithProgress:(BOOL)showProgress success:(void(^)(NSURLSessionDataTask * task, id responseObject))success warn:(void(^)(NSString * content))warn error:(void(^)(NSString * content))error failure:(void(^)(NSURLSessionDataTask * task, NSError * error))failure;
-
 //交易提交
 +(void)transcationSubmitWithProgress:(BOOL)showProgress hash:(NSString *)hash txBlob:(NSString *)txBlob success:(void(^)(id result))success warn:(void(^)(NSString * content))warn error:(void(^)(NSString * content))error failure:(void(^)(NSError * error))failure;
 

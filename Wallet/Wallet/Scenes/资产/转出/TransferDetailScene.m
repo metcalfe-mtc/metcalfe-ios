@@ -68,24 +68,44 @@
 }
 
 -(void)setupView{
-    self.title1.text = GetStringWithKeyFromTable(@"发款方_title", LOCALIZABE, nil);
-    self.title2.text = GetStringWithKeyFromTable(@"收款方_title", LOCALIZABE, nil);
-    self.title3.text = GetStringWithKeyFromTable(@"金额_title", LOCALIZABE, nil);
-    self.title4.text = GetStringWithKeyFromTable(@"手续费_title", LOCALIZABE, nil);
-    self.title5.text = GetStringWithKeyFromTable(@"交易类型_title", LOCALIZABE, nil);
-    self.title6.text = GetStringWithKeyFromTable(@"状态_title", LOCALIZABE, nil);
-    self.title7.text = GetStringWithKeyFromTable(@"交易哈希_title", LOCALIZABE, nil);
-    self.title8.text = GetStringWithKeyFromTable(@"区块_title", LOCALIZABE, nil);
-    self.title9.text = GetStringWithKeyFromTable(@"时间_title", LOCALIZABE, nil);
-    self.title10.text = GetStringWithKeyFromTable(@"备注_title", LOCALIZABE, nil);
+    if([self.transcationType isEqualToString:@"TrustSet"]){
+        self.title1.text = GetStringWithKeyFromTable(@"发起方_title", LOCALIZABE, nil);
+        self.title2.text = GetStringWithKeyFromTable(@"发行商_title", LOCALIZABE, nil);
+        self.title3.text = GetStringWithKeyFromTable(@"币种_title", LOCALIZABE, nil);
+        self.title4.text = GetStringWithKeyFromTable(@"手续费_title", LOCALIZABE, nil);
+        self.title5.text = GetStringWithKeyFromTable(@"交易类型_title", LOCALIZABE, nil);
+        self.title6.text = GetStringWithKeyFromTable(@"状态_title", LOCALIZABE, nil);
+        self.title7.text = GetStringWithKeyFromTable(@"交易哈希_title", LOCALIZABE, nil);
+        self.title8.text = GetStringWithKeyFromTable(@"区块_title", LOCALIZABE, nil);
+        self.title9.text = GetStringWithKeyFromTable(@"时间_title", LOCALIZABE, nil);
+        self.title10.text = GetStringWithKeyFromTable(@"备注_title", LOCALIZABE, nil);
+    }else{
+        self.title1.text = GetStringWithKeyFromTable(@"发款方_title", LOCALIZABE, nil);
+        self.title2.text = GetStringWithKeyFromTable(@"收款方_title", LOCALIZABE, nil);
+        self.title3.text = GetStringWithKeyFromTable(@"金额_title", LOCALIZABE, nil);
+        self.title4.text = GetStringWithKeyFromTable(@"手续费_title", LOCALIZABE, nil);
+        self.title5.text = GetStringWithKeyFromTable(@"交易类型_title", LOCALIZABE, nil);
+        self.title6.text = GetStringWithKeyFromTable(@"状态_title", LOCALIZABE, nil);
+        self.title7.text = GetStringWithKeyFromTable(@"交易哈希_title", LOCALIZABE, nil);
+        self.title8.text = GetStringWithKeyFromTable(@"区块_title", LOCALIZABE, nil);
+        self.title9.text = GetStringWithKeyFromTable(@"时间_title", LOCALIZABE, nil);
+        self.title10.text = GetStringWithKeyFromTable(@"备注_title", LOCALIZABE, nil);
+    }
+
 }
 
 -(void)setupDate{
     self.detail1.text = self.model.transferAccount;
     self.detail2.text = self.model.receiverAccount;
-    self.detail3.text = [NSString stringWithFormat:@"%@ %@",self.model.amount,self.model.currency];
+    
+    
     self.detail4.text = self.model.fee;
     self.detail5.text = self.model.transferType;
+    if([self.model.transferType isEqualToString:@"TrustSet"]){
+        self.detail3.text = self.model.currency;
+    }else{
+        self.detail3.text = [NSString stringWithFormat:@"%@ %@",self.model.amount,self.model.currency];
+    }
     if (self.model.validated) {
         self.activityView.hidden = YES;
         [self.activityView stopAnimating];
