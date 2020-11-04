@@ -217,11 +217,11 @@
             NSString *value = dict[@"limitAmount"][@"value"];
             if([value isEqualToString:@"0"]){
                 cell.transferType.text = GetStringWithKeyFromTable(@"取消授信_status", LOCALIZABE, nil);
-                cell.transferType.textColor = RGB(0, 78, 254);
+                cell.transferType.textColor = [UIColor darkTextColor];
 
             }else{
                 cell.transferType.text = GetStringWithKeyFromTable(@"授信_status", LOCALIZABE, nil);
-                cell.transferType.textColor = RGB(255, 0, 0);
+                cell.transferType.textColor = [UIColor darkTextColor];
             }
             cell.amount.text = @"";
         }else{
