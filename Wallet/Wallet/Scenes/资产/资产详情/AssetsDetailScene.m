@@ -25,7 +25,6 @@
 
 @property(nonatomic ,assign) NSInteger currentPage;
 @property(nonatomic ,strong) NSString *marker;
-@property(nonatomic ,assign) NSInteger markerCount;
 @property(nonatomic ,strong) NSArray *transactions;
 
 @property(nonatomic,strong) NSString *sequence;
@@ -41,7 +40,6 @@
     self.availableTitle.text = GetStringWithKeyFromTable(@"可用_text", LOCALIZABE, nil);
     [self setupDateWithBalance:self.balance.balance freeze:self.freezeStr];
     self.currentPage = 1;
-    self.markerCount = 3;
     [self.tableView registerNib:[UINib nibWithNibName:@"TranscationRecordCell" bundle:nil] forCellReuseIdentifier:@"TranscationRecordCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"TranscationFirstCell" bundle:nil] forCellReuseIdentifier:@"TranscationFirstCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"TranscationLastCell" bundle:nil] forCellReuseIdentifier:@"TranscationLastCell"];
@@ -118,9 +116,8 @@
             }
         }];
         self.transactions = records;
-        if(self.transactions.count> 10*self.currentPage){
+        if(self.transactions.count == 50*self.currentPage){
             [self endRefresh];
-            self.transactions = [self.transactions subarrayWithRange:NSMakeRange(0, 10*self.currentPage)];
         }else{
             [self.tableView.mj_header endRefreshing];   
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
@@ -217,11 +214,11 @@
             NSString *value = dict[@"limitAmount"][@"value"];
             if([value isEqualToString:@"0"]){
                 cell.transferType.text = GetStringWithKeyFromTable(@"取消授信_status", LOCALIZABE, nil);
-                cell.transferType.textColor = [UIColor darkTextColor];
+                cell.transferType.textColor = RGB(0, 78, 254);
 
             }else{
                 cell.transferType.text = GetStringWithKeyFromTable(@"授信_status", LOCALIZABE, nil);
-                cell.transferType.textColor = [UIColor darkTextColor];
+                cell.transferType.textColor = RGB(255, 0, 0);
             }
             cell.amount.text = @"";
         }else{
@@ -278,14 +275,13 @@
 //{
 //    return [UIImage imageNamed:@"img_no_data"];
 //}
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView;
-{
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView;{
     NSMutableAttributedString *tittle = [[NSMutableAttributedString alloc] initWithString:GetStringWithKeyFromTable(@"暂无交易记录_title",LOCALIZABE,nil)];
     [tittle addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, tittle.length)];
     return tittle;
 }
-- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView
-{
+
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
     return YES;
 }
 //- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
